@@ -5,6 +5,8 @@
     "declaration": true,                              /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
     "outDir": "./dist",                                   /* Specify an output folder for all emitted files. */          /* Ensure that casing is correct in imports. */
     "strict": true,                                      /* Enable all strict type-checking options. */
+    "noImplicitAny": true,
   },
   "include": ["src/**/*"],                               /* Specify an array of glob patterns that match files to include in the program. */
 }
+

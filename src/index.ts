@@ -1,16 +1,29 @@
-function exampleFunction(
-  param1: string,
-  param2: number,
-  param3: boolean = true,
-  param4: string = 'default value'
-): string {
-  return `Param1: ${param1}, Param2: ${param2}, Param3: ${param3}, Param4: ${param4}`
+import { singleValidation } from './funtions/singleValidation'
+import { DataValidation } from './models/dataValidation.model'
+
+const dataUNO: DataValidation = {
+  id: '1',
+  title: 'Title',
+  type: ['R', 'T'],
+  value: 'Value',
+  message: 'Message',
 }
 
-const result1: string = exampleFunction('Hello', 42, false, 'custom value')
+const dataDOS: DataValidation = {
+  id: '1',
+  title: 'Title',
+  type: 'T',
+  value: 'Value',
+  message: 'Message',
+}
 
-console.log(result1)
-
-const result2: string = exampleFunction('Hello', 42)
-
-console.log(result2)
+const dataTRES: DataValidation = {
+  id: '1',
+  title: 'Title',
+  type: [],
+  value: 'Value',
+  message: 'Message',
+}
+console.log('==>', singleValidation(dataUNO, 'UNO'))
+console.log('==>', singleValidation(dataDOS, 'DOS'))
+console.log('==>', singleValidation(dataTRES, 'TRES'))

@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint 'src/**/*.{js,ts}'",
+    "clean": "rm -rf ./dist",
     "lint:fix": "eslint 'src/**/*.{js,ts}' --fix",
     "format": "prettier --write 'src/**/*.{js,ts}'",
-    "build": "tsc"
+    "build": "npm run clean && tsc",
+    "watch": "npm run clean && tsc --watch",
+    "dev": "npm run clean && npm run watch & nodemon dist/index.js"
   },
   "keywords": [
     "typescript",
@@ -35,6 +38,7 @@
     "eslint-plugin-promise": "7.1.0",
     "globals": "15.10.0",
     "husky": "9.1.6",
+    "nodemon": "^3.1.7",
     "prettier": "3.3.3",
     "typescript-eslint": "8.8.1"
   }

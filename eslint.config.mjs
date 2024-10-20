@@ -7,7 +7,7 @@ import prettierConfig from 'eslint-config-prettier'
 
 export default [
   {
-    files: ['**/*.{js,mjs,cjs,ts}'],
+    files: ['**/*.{mjs,cjs,ts}'],
   },
   {
     languageOptions: {
@@ -44,10 +44,9 @@ export default [
       '@typescript-eslint/typedef': [
         'error', // Obliga a declarar tipos para variables, propiedades y parámetros
         {
-          parameter: true, // Obliga a especificar tipos para parámetros de función
-          propertyDeclaration: true, // Obliga a declarar tipos para propiedades
-          variableDeclaration: true, // Obliga a declarar tipos para variables
-          memberVariableDeclaration: true, // Obliga a declarar tipos en variables miembro de clases
+          arrowParameter: true, // No exigir tipos en parámetros de funciones flecha
+          variableDeclaration: true,
+          propertyDeclaration: true,
         },
       ],
     },

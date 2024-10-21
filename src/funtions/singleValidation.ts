@@ -1,3 +1,4 @@
+import { EN_MESSAGE_ERRORS } from '../constants/messages/en'
 import { ES_MESSAGE_ERRORS } from '../constants/messages/es'
 import { TypeLanguage } from '../constants/typeLanguage'
 import {
@@ -17,7 +18,7 @@ export const singleValidation: (
 ): ResultValidation => {
   const { type, id } = dataValidation
   const { ERROR_TYPE_ARRAY } =
-    ES === language ? ES_MESSAGE_ERRORS : ES_MESSAGE_ERRORS
+    ES === language ? ES_MESSAGE_ERRORS : EN_MESSAGE_ERRORS
 
   let result: ResultValidation = {
     id,

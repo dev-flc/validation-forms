@@ -1,3 +1,4 @@
+import { TypeValidation } from '../typeValidation'
 import { isValidString } from './../../utils/utils'
 
 export enum ES_MESSAGE_ERRORS {
@@ -9,15 +10,30 @@ export enum ES_MESSAGE_ERRORS {
   ERROR_ID_UNDEFINED = 'id indefinido :(',
 }
 
-export const GET_MESSAGE: () => {
+const GET_MESSAGE: () => {
   [key: string]: (title?: string) => string
 } = (): { [key: string]: (title?: string) => string } => ({
-  ['T']: (title?: string): string =>
+  [TypeValidation.T]: (title?: string): string =>
     isValidString(title)
       ? `El dato ${title} no es válido, ingresa sólo letras.`
       : `El dato no es válido, ingresa sólo letras.`,
 
-  ['R']: (title?: string): string =>
+  [TypeValidation.R]: (title?: string): string =>
+    isValidString(title)
+      ? `El dato ${title}, es requerido.`
+      : `El dato es requerido.`,
+
+  [TypeValidation.N]: (title?: string): string =>
+    isValidString(title)
+      ? `El dato ${title} no es válido, ingresa sólo números.`
+      : `El dato no es válido, ingresa sólo números.`,
+
+  [TypeValidation.TN]: (title?: string): string =>
+    isValidString(title)
+      ? `El dato ${title} no es válido, ingresa sólo letras y números.`
+      : `El dato no es válido, ingresa sólo letras y números.`,
+
+  [TypeValidation.C]: (title?: string): string =>
     isValidString(title)
       ? `El dato ${title}, es requerido.`
       : `El dato es requerido.`,
@@ -28,7 +44,7 @@ const messageDefault: (title?: string) => string = (title?: string): string =>
     ? `El dato ${title}, no es válido.`
     : `El dato no es válido.`
 
-export const ES_MESSAGE: (type: string, title?: string) => string = (
+export const GET_ES_MESSAGE: (type: string, title?: string) => string = (
   type: string,
   title?: string
 ): string => {

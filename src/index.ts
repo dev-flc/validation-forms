@@ -5,7 +5,7 @@ const dataUNO: DataValidation = {
   id: 'soy el id 1',
   title: 'Title 1',
   type: ['R'],
-  value: '2',
+  value: '',
 }
 
 const dataDOS: DataValidation = {
@@ -23,6 +23,6 @@ const dataTRES: DataValidation = {
   value: 'Value',
   message: 'Message',
 }
-console.log(singleValidation(dataUNO))
-console.log(singleValidation(dataDOS))
-console.log(singleValidation(dataTRES))
+console.log(singleValidation(dataUNO, 'EQ'))
+console.log(singleValidation(dataDOS, 'EN'))
+console.log(singleValidation(dataTRES, 'EN'))

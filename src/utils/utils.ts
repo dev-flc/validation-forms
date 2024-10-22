@@ -6,7 +6,7 @@ import {
 } from '../models/dataValidation.model'
 import { configValidations } from '../funtions/configValidations'
 import { TypeValidation } from '../constants/typeValidation'
-import { getEnMessage } from '../constants/messages/en'
+import { EN_MESSAGE_ERRORS, getEnMessage } from '../constants/messages/en'
 
 const { ES } = TypeLanguage
 
@@ -53,7 +53,7 @@ export const getMessage: (
         new_message = getEnMessage(type, title)
       }
     } else {
-      new_message = ES_MESSAGE_ERRORS.ERROR_TYPE_LANGUAGE
+      new_message = `[${ES_MESSAGE_ERRORS.ERROR_TYPE_LANGUAGE}][${EN_MESSAGE_ERRORS.ERROR_TYPE_LANGUAGE}] :(`
     }
   } else {
     if (typeof message === 'string') {
@@ -73,7 +73,7 @@ export const validationConfig: (
   const { type, id } = dataValidation
 
   const { ERROR_TYPE_VALIDATION, ERROR_ID_UNDEFINED } =
-    ES === language ? ES_MESSAGE_ERRORS : ES_MESSAGE_ERRORS
+    ES === language ? ES_MESSAGE_ERRORS : EN_MESSAGE_ERRORS
 
   const message: string = id ? ERROR_TYPE_VALIDATION : ERROR_ID_UNDEFINED
 

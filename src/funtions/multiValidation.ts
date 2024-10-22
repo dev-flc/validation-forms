@@ -1,7 +1,7 @@
 import { TypeLanguage } from '../constants/typeLanguage'
 import {
   DataValidationArray,
-  ArrayResultValidation,
+  ResultValidationArray,
 } from '../models/dataValidation.model'
 import { singleValidation } from './singleValidation'
 
@@ -9,12 +9,12 @@ const { ES } = TypeLanguage
 
 export const multiValidation: (
   dataValidation: DataValidationArray,
-  language?: string
-) => ArrayResultValidation = (
+  language?: 'EN' | 'ES'
+) => ResultValidationArray = (
   dataValidation: DataValidationArray,
-  language: string = ES
-): ArrayResultValidation => {
-  let result: ArrayResultValidation = {
+  language: 'EN' | 'ES' = ES
+): ResultValidationArray => {
+  let result: ResultValidationArray = {
     status: true,
   }
   for (const NEW_DATA of dataValidation) {

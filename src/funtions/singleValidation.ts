@@ -11,10 +11,10 @@ const { ES } = TypeLanguage
 
 export const singleValidation: (
   dataValidation: DataValidation,
-  language?: string
+  language?: 'EN' | 'ES'
 ) => ResultValidation = (
   dataValidation: DataValidation,
-  language: string = ES
+  language: 'EN' | 'ES' = ES
 ): ResultValidation => {
   const { type, id } = dataValidation
   const { ERROR_TYPE_ARRAY } =

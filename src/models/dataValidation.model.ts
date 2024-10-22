@@ -8,14 +8,22 @@ export interface DataValidation {
   message?: string // Mensaje opcional para el tipo "R"
 }
 
+export type DataValidationArray = DataValidation[]
+
 export interface ResultValidation {
   id: string
   message?: string
   status: boolean
 }
 
-export type ArrayResultValidation = Omit<ResultValidation, 'id'> & {
+export type ResultValidationArray = Omit<ResultValidation, 'id' | 'status'> & {
   id?: string
+  status?: boolean
 }
 
-export type DataValidationArray = DataValidation[]
+export type DataValidationArrayErrors = ResultValidationArray[]
+
+export interface ResultValidationArrayErros {
+  status: boolean
+  errors?: ResultValidationArray[]
+}

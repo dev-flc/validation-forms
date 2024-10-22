@@ -10,7 +10,7 @@ export enum EN_MESSAGE_ERRORS {
   ERROR_ID_UNDEFINED = 'undefined id :(',
 }
 
-const GET_MESSAGE: () => {
+const getMessage: () => {
   [key: string]: (title?: string) => string
 } = (): { [key: string]: (title?: string) => string } => ({
   [TypeValidation.T]: (title?: string): string =>
@@ -44,12 +44,12 @@ const messageDefault: (title?: string) => string = (title?: string): string =>
     ? `The data ${title}, is not valid.`
     : `The data is not valid.`
 
-export const GET_EN_MESSAGE: (type: string, title?: string) => string = (
+export const getEnMessage: (type: string, title?: string) => string = (
   type: string,
   title?: string
 ): string => {
   let message: string = messageDefault(title)
-  const messages: { [key: string]: (title?: string) => string } = GET_MESSAGE()
+  const messages: { [key: string]: (title?: string) => string } = getMessage()
   if (Object.prototype.hasOwnProperty.call(messages, type)) {
     message = messages[type](title)
   }

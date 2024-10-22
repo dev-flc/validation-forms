@@ -5,7 +5,7 @@ import {
   DataValidation,
   ResultValidation,
 } from '../models/dataValidation.model'
-import { isValidString, LOOP_TYPE_VALIDATIONS } from '../utils/utils'
+import { isValidString, loopTypeValidations } from '../utils/utils'
 
 const { ES } = TypeLanguage
 
@@ -27,7 +27,7 @@ export const singleValidation: (
   }
 
   if (Array.isArray(type) && type.length >= 1) {
-    result = LOOP_TYPE_VALIDATIONS(dataValidation, language)
+    result = loopTypeValidations(dataValidation, language)
   } else if (typeof type === 'string' && isValidString(type)) {
     result = {
       ...result,

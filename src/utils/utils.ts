@@ -1,4 +1,4 @@
-import { GET_ES_MESSAGE, ES_MESSAGE_ERRORS } from '../constants/messages/es'
+import { getEsMessage, ES_MESSAGE_ERRORS } from '../constants/messages/es'
 import { TypeLanguage } from '../constants/typeLanguage'
 import {
   DataValidation,
@@ -6,7 +6,7 @@ import {
 } from '../models/dataValidation.model'
 import { configValidations } from '../funtions/configValidations'
 import { TypeValidation } from '../constants/typeValidation'
-import { GET_EN_MESSAGE } from '../constants/messages/en'
+import { getEnMessage } from '../constants/messages/en'
 
 const { ES } = TypeLanguage
 
@@ -31,12 +31,12 @@ export const getResul: (
     status: false,
   }
 
-  result.message = GET_MESSAGES(dataValidation, language)
+  result.message = getMessage(dataValidation, language)
 
   return result
 }
 
-export const GET_MESSAGES: (
+export const getMessage: (
   dataValidation: DataValidation,
   language: string
 ) => string = (dataValidation: DataValidation, language: string): string => {
@@ -46,11 +46,11 @@ export const GET_MESSAGES: (
   if (!isValidString(message)) {
     if (language === TypeLanguage.ES) {
       if (typeof type === 'string' && isValidString(type)) {
-        new_message = GET_ES_MESSAGE(type, title)
+        new_message = getEsMessage(type, title)
       }
     } else if (language === TypeLanguage.EN) {
       if (typeof type === 'string' && isValidString(type)) {
-        new_message = GET_EN_MESSAGE(type, title)
+        new_message = getEnMessage(type, title)
       }
     } else {
       new_message = ES_MESSAGE_ERRORS.ERROR_TYPE_LANGUAGE
@@ -63,7 +63,7 @@ export const GET_MESSAGES: (
   return new_message
 }
 
-export const VALIDATIONS_CONFIG: (
+export const validationConfig: (
   dataValidation: DataValidation,
   language: string
 ) => ResultValidation = (
@@ -111,7 +111,7 @@ export const VALIDATIONS_CONFIG: (
   return result
 }
 
-export const LOOP_TYPE_VALIDATIONS: (
+export const loopTypeValidations: (
   dataValidation: DataValidation,
   language: string
 ) => ResultValidation = (
@@ -127,7 +127,7 @@ export const LOOP_TYPE_VALIDATIONS: (
   }
 
   for (const NEW_TYPE of type) {
-    result = VALIDATIONS_CONFIG({ ...dataValidation, type: NEW_TYPE }, language)
+    result = validationConfig({ ...dataValidation, type: NEW_TYPE }, language)
     if (result.status === false) {
       break
     }
